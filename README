@@ -1,0 +1,45 @@
+Introduction & Source Code Structure 
+
+src/main/java/queue - source code
+
+src/main/java/queue/ArrayQuickQueue.java
+ - A bounded single-producer-single-consumer FIFO thread-safe queue
+ - No lock is used
+ - No CAS is used
+ - Outperform java.util.concurrent.ConcurrentLinkedQueue by a small margin
+ - Look for source code comments for more details.
+
+src/main/java/queue/ArrayQuickBlockingQueue.java
+ - A bounded single-producer-single-consumer FIFO thread-safe queue
+ - An extension of ArrayQuickQueue
+ - Instant add/remove with added blocking mechanism
+ - Outperform java.util.concurrent.ArrayBlockingQueue by a big margin
+ - Look for source code comments for more details.
+
+src/main/java/queue/ConcurrentArrayQueue.java
+ - A bounded multiple-producer-multiple-consumer FIFO thread-safe queue
+ - Bounded feature as compared to unbounded java.util.concurrent.ConcurrentLinkedQueue
+ - No lock is used
+ - CAS is used to ensure consistent add/remove
+ - Underperform java.util.concurrent.ConcurrentLinkedQueue by a margin from 20% to 5%
+ - Look for source code comments for more details.
+
+
+src/test/java/queue - testing
+
+src/test/java/queue/ArrayQuickBlockingQueueThroughtputTest.java
+ - Throughput test benchmark java.util.concurrent.ArrayBlockingQueue
+
+src/test/java/queue/ArrayQuickQueueConsistencyTest.java
+ - Consistency test
+
+src/test/java/queue/ArrayQuickQueueThroughtputTest.java
+ - Throughput test benchmark java.util.concurrent.ConcurrentLinkedQueue  
+
+src/test/java/queue/ConcurrentArrayQueueThroughtputTest.java
+ - Throughput test benchmark java.util.concurrent.ConcurrentLinkedQueue  
+
+src/test/java/queue/LaunderThrowable.java
+ - Copy from <Java Concurrency In Practice>
+ - Used for ExecutionException interpretation
+ 
